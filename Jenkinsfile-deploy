@@ -1,12 +1,23 @@
 pipeline {
-    agent any
+    agent any 
+
     stages {
         stage('Deploy Staging') {
             steps {
-                
-                sh "docker compose pull"
-                sh "docker compose up -d"
+                script {
+                    
+                    sh "docker compose pull"
+                    
+
+                    sh "docker compose up -d --remove-orphans frontend-crisisview"
+                }
             }
+        }
+    }
+    
+    post {
+        success {
+            echo "Déploiement réussi sur l'environnement de Staging."
         }
     }
 }
