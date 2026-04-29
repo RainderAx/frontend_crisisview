@@ -24,16 +24,12 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
-                    sh """
-                    sonar-scanner \
-                      -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
-                      -Dsonar.sources=. \
-                      -Dsonar.host.url=http://sonarqube-container:9000 \
-                      -Dsonar.token=${SONAR_TOKEN}
-                    """
+                sh """
+                sonar-scanner -Dsonar.token=${SONAR_TOKEN}
+                """
                 }
             }
-        }
+        }   
 
         stage('Docker Build & Push') {
             steps {
