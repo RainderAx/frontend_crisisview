@@ -55,11 +55,5 @@ pipeline {
             }
         }
         
-        stage('Deploy Staging') {
-            steps {
-               
-                sh "docker compose up -d"
-            }
-        }
     }
 }
