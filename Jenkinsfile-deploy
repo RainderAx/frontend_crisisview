@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Deploy Staging') {
             steps {
-                // Télécharge la dernière image et relance le conteneur
+                
                 sh "docker compose pull"
                 sh "docker compose up -d"
             }
