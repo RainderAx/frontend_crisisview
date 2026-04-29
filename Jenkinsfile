@@ -13,7 +13,7 @@ pipeline {
         stage('Clone') {
             steps {
 
-                git branch: 'main', url: 'https://github.com/fredericEducentre/frontend_crisisview'
+                git branch: 'main', url: 'https://github.com/RainderAx/frontend_crisisview.git'
             }
         }
 
